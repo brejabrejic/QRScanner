@@ -1,4 +1,5 @@
 import sys
+import json
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QSizePolicy
 from PyQt5.QtCore import Qt
 from QRIn import QRCodeScannerIn
@@ -10,41 +11,10 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.qr_code_scanner = None
         self.setWindowTitle("QR Code Scanner")
-
-        dark_stylesheet = """
-            QWidget {
-                background-color: #303030;
-                color: #EAEAEA;
-            }
-
-            QPushButton {
-                background-color: #2d2d2d;
-                color: white;
-                border-radius: 20px;
-                padding: 10px;
-                font-size: 20pt;
-                border: 2px solid #A5FFC9;
-            }
-
-            QPushButton:hover {
-                background-color: #424242;
-            }
-
-            QPushButton:pressed {
-                background-color: #1e1e1e;
-            }
-
-            QLabel {
-                color: #EAEAEA;
-            }
-
-            QStatusBar {
-                background-color: #3C3F41;
-                color: #EAEAEA;
-            }
-        """
-
-        self.setStyleSheet(dark_stylesheet)
+        f = open('cfg/config.json', 'r')
+        json_data = json.loads(f.read())
+        self.setStyleSheet(json_data['dark_stylesheet'])
+        f.close()
 
         # Create the ulaz and izlaz buttons
         self.ulaz_button = QPushButton("Ulaz")

@@ -1,3 +1,6 @@
 {
-  "host": "mongodb://localhost:27017"
+  "host": "mongodb://localhost:27017",
+  "current_theme": "dark",
+  "dark_stylesheet": "QWidget {\n                background-color: #303030;\n                color: #EAEAEA;\n            }\n\n            QPushButton {\n                background-color: #2d2d2d;\n                color: white;\n                border-radius: 20px;\n                padding: 10px;\n                font-size: 20pt;\n                border: 4px solid #c9c0bb;\n            }\n\n            QPushButton:hover {\n                background-color: #424242;\n            }\n\n            QPushButton:pressed {\n                background-color: #1e1e1e;\n            }\n\n            QLabel {\n                color: #EAEAEA;\n            }\n\n            QStatusBar {\n                background-color: #3C3F41;\n                color: #EAEAEA;\n            }",
+  "light_stylesheet": "QPushButton {\n    background-color: #faf9f9;\n    border: 1px solid black;\n    border-radius: 10px;\n    color: #555555;\n    font-size: 20pt;\n    padding: 10px;\n}\n\nQPushButton:hover {\n    background-color: #add2c9;\n    color: #000000;\n}\n\nQMainWindow {\n    background-color: #faf9f9;\n}\n\nQStatusBar {\n    background-color: #d9d9d9;\n}\n\nQLabel {\n    color: #555555;\n    font-size: 24px;\n}\n\n"
 }
