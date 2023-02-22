@@ -12,7 +12,7 @@ import pymongo
 from pymongo.errors import ConnectionFailure
 
 
-class QRCodeScanner(QMainWindow):
+class QRCodeScannerOut(QMainWindow):
     def __init__(self):
         super().__init__()
         self.check_connection_timer = None

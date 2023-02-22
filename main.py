@@ -1,12 +1,14 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget
 from PyQt5.QtCore import Qt
-from QRIn import QRCodeScanner
+from QRIn import QRCodeScannerIn
+from QROut import QRCodeScannerOut
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.qr_code_scanner = None
         self.setWindowTitle("QR Code Scanner")
 
         # Create the ulaz and izlaz buttons
@@ -28,12 +30,17 @@ class MainWindow(QMainWindow):
         self.izlaz_button.clicked.connect(self.izlaz)
 
     def ulaz(self):
-        self.qr_code_scanner = QRCodeScanner("ULAZ")
+        self.qr_code_scanner = QRCodeScannerIn()
         self.qr_code_scanner.showFullScreen()
 
     def izlaz(self):
-        self.qr_code_scanner = QRCodeScanner("IZLAZ")
+        self.qr_code_scanner = QRCodeScannerOut()
         self.qr_code_scanner.showFullScreen()
+
+
+    def keyPressEvent(self, e):
+        if e.key() == Qt.Key_Escape:
+            self.close()
 
 
 if __name__ == '__main__':
