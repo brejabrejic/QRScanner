@@ -1,5 +1,4 @@
-import io
-
+import json
 import cv2
 import sys
 import numpy as np
@@ -29,8 +28,11 @@ class QRCodeScannerIn(QMainWindow):
         self.label.setScaledContents(True)
 
         try:
-            self.db_client = pymongo.MongoClient('mongodb://localhost:27017', serverSelectionTimeoutMS=5000)
+            f = open('cfg/config.json', "r")
+            json_data = json.loads(f.read())
+            self.db_client = pymongo.MongoClient(json_data['host'], serverSelectionTimeoutMS=5000)
             self.statusBar().showMessage("Connected to database.")
+            f.close()
         except ConnectionFailure:
             self.db_client = None
             self.statusBar().showMessage("Connection to database failed.")
