@@ -165,6 +165,8 @@ class QRCodeScannerIn(QMainWindow):
 
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Escape:
+            self.camera.release()
+            self.timer.stop()
             self.close()
 
 

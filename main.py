@@ -11,6 +11,7 @@ class MainWindow(QMainWindow):
         self.qr_code_scanner = None
         self.setWindowTitle("QR Code Scanner")
 
+
         # Create the ulaz and izlaz buttons
         self.ulaz_button = QPushButton("Ulaz")
         self.izlaz_button = QPushButton("Izlaz")
