@@ -109,6 +109,19 @@ class QRCodeScannerOut(QMainWindow):
                     cv2.imwrite(filepath, frame)
                     self.close()
 
+                    izlaz_collection = self.db_client['Upravljanje_Banja_Luka']['Izlaz']
+                    izlaz_dictionary = {
+                        'id_radnika': document['_id'],
+                        'dt': datetime.now(),
+                        'ime': document['Ime'],
+                        'prezime': document['Prezime'],
+                        'img_path': filepath,
+                        'type': 'izlaz'
+                    }
+
+                    izlaz_collection.insert_one(izlaz_dictionary)
+
+
                     # Display success message and close it after 1 second
                     self.success_message = QMessageBox()
 

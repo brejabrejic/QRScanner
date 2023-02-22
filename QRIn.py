@@ -1,7 +1,11 @@
+import io
+
 import cv2
 import sys
 import numpy as np
 import os
+
+from PIL.Image import Image
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QMessageBox
@@ -102,12 +106,27 @@ class QRCodeScannerIn(QMainWindow):
                                 bottom_left_corner,
                                 font, font_scale, font_color, line_type)
 
+
+
+
                     # Save image to file
-                    filename = '{}_{}.png'.format(data, datetime.now().strftime('%d%m%Y(_%H%M%S'))
+                    filename = '{}_{}.png'.format(data, datetime.now().strftime('%d%m%Y_%H%M%S'))
                     filepath = os.path.join('ULAZ', filename)
                     frame[:, :, [0, 2]] = frame[:, :, [2, 0]]
                     cv2.imwrite(filepath, frame)
                     self.close()
+
+                    ulaz_collection = self.db_client['Upravljanje_Banja_Luka']['Ulaz']
+                    ulaz_dictionary = {
+                        'id_radnika': document['_id'],
+                        'dt': datetime.now(),
+                        'ime': document['Ime'],
+                        'prezime': document['Prezime'],
+                        'img_path': filepath,
+                        'type': 'ulaz'
+                    }
+
+                    ulaz_collection.insert_one(ulaz_dictionary)
 
                     # Display success message and close it after 1 second
                     self.success_message = QMessageBox()

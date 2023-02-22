@@ -23,7 +23,7 @@ class MainWindow(QMainWindow):
                 border-radius: 20px;
                 padding: 10px;
                 font-size: 20pt;
-                border: 2px solid #898a74;
+                border: 2px solid #A5FFC9;
             }
 
             QPushButton:hover {
