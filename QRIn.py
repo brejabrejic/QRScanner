@@ -12,7 +12,7 @@ import pymongo
 from pymongo.errors import ConnectionFailure
 
 
-class QRCodeScanner(QMainWindow):
+class QRCodeScannerIn(QMainWindow):
     def __init__(self):
         super().__init__()
         self.check_connection_timer = None
@@ -170,6 +170,6 @@ class QRCodeScanner(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = QRCodeScanner()
+    window = QRCodeScannerIn()
     window.showFullScreen()
     sys.exit(app.exec_())

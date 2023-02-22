@@ -170,6 +170,6 @@ class QRCodeScannerOut(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = QRCodeScanner()
+    window = QRCodeScannerOut()
     window.showFullScreen()
     sys.exit(app.exec_())
