@@ -115,7 +115,7 @@ class QRCodeScannerOut(QMainWindow):
                     line_type = 1
 
                     # The stamp will contain the last name, first name and the current date and time
-                    cv2.putText(frame, str(document['Prezime']) + ' ' + str(document['Ime'])
+                    cv2.putText(frame, 'Izlaz - '+str(document['Prezime']) + ' ' + str(document['Ime'])
                                 + ' - '
                                 + datetime.now().strftime('%d.%m.%Y, %H:%M:%S'),
                                 bottom_left_corner,
@@ -124,8 +124,21 @@ class QRCodeScannerOut(QMainWindow):
                     # Save image to file
                     # File name is formated to be named after the scanned data+current date and time
                     filename = '{}_{}.png'.format(data, datetime.now().strftime('%d.%m.%Y_%H%M%S'))
-                    # The image goes to the folder IZLAZ
-                    filepath = os.path.join('IZLAZ', filename)
+
+                    # The image goes to the folder IZLAZ and then to a folder that fits its corresponding date.
+                    # If the path doesn't exist we are making one with os
+                    cwd = os.getcwd()
+                    path = cwd + '\\IZLAZ\\' + datetime.now().strftime('%d.%m.%Y')
+                    existing_path_check = os.path.exists(path)
+                    print(path)
+                    # if path exists-pass
+                    if existing_path_check is True:
+                        pass
+                    else:
+                        # Else make the directory
+                        os.makedirs(path)
+                    #  actual path with the file name
+                    filepath = os.path.join(path, filename)
 
                     # We are reversing the colors back to normal before writing the image.
                     # We don't need the PyQt reversed colors anymore
