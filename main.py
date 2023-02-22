@@ -11,6 +11,38 @@ class MainWindow(QMainWindow):
         self.qr_code_scanner = None
         self.setWindowTitle("QR Code Scanner")
 
+        dark_stylesheet = """
+            QWidget {
+                background-color: #303030;
+                color: #EAEAEA;
+            }
+
+            QPushButton {
+                background-color: #2d2d2d;
+                color: white;
+                border-radius: 20px;
+                padding: 10px;
+            }
+
+            QPushButton:hover {
+                background-color: #424242;
+            }
+
+            QPushButton:pressed {
+                background-color: #1e1e1e;
+            }
+
+            QLabel {
+                color: #EAEAEA;
+            }
+
+            QStatusBar {
+                background-color: #3C3F41;
+                color: #EAEAEA;
+            }
+        """
+
+        self.setStyleSheet(dark_stylesheet)
 
         # Create the ulaz and izlaz buttons
         self.ulaz_button = QPushButton("Ulaz")
