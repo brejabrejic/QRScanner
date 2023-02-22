@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QSizePolicy
 from PyQt5.QtCore import Qt
 from QRIn import QRCodeScannerIn
 from QROut import QRCodeScannerOut
@@ -22,6 +22,8 @@ class MainWindow(QMainWindow):
                 color: white;
                 border-radius: 20px;
                 padding: 10px;
+                font-size: 20pt;
+                border: 2px solid #898a74;
             }
 
             QPushButton:hover {
@@ -46,7 +48,11 @@ class MainWindow(QMainWindow):
 
         # Create the ulaz and izlaz buttons
         self.ulaz_button = QPushButton("Ulaz")
+        self.ulaz_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
         self.izlaz_button = QPushButton("Izlaz")
+        self.izlaz_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
 
         # Set up the layout
         layout = QVBoxLayout()
