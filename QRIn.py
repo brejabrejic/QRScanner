@@ -183,7 +183,7 @@ class QRCodeScannerIn(QMainWindow):
 
                     # Write the error to the log.txt file
                     with open('log.txt', 'a+') as f:
-                        f.writelines(str(datetime.now())+str(e)+'\n')
+                        f.writelines(str(datetime.now())+','+str(e)+'\n')
 
                     # Display error message and close it after 2.5 seconds
                     self.error_message = QMessageBox()
